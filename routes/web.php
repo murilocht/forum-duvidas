@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ForumController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ForumController::class, 'index'])->name('forum.index');
+
+Route::get('/form', [ForumController::class, 'form'])->name('forum.form');
+
+Route::post('/cadastrar', [ForumController::class, 'cadastrar'])->name('forum.cadastrar');
